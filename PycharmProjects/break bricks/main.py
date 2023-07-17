@@ -1,6 +1,5 @@
 import pygame
 import random
-# import matplotlib.pyplot as plt
 
 from square import Square
 from player import Player
@@ -63,14 +62,6 @@ while running:
             continue
         square.pos_x = 0
         square.pos_y = 10
-        """
-        if square.life == 3:
-            square.color = "WHITE"
-        elif square.life == 2:
-            square.color = "RED"
-        elif square.life == 1:
-            square.color = "BLUE"
-        """
         pygame.display.set_caption(f"BREAK BRICKS (FPS : {int(clock.get_fps())})")
         screen.fill(pygame.Color("BEIGE"))
         clock.tick(FPS)
@@ -92,41 +83,6 @@ while running:
         screen.blit(player.image, player.rect)
         b = pygame.draw.circle(screen, pygame.Color("BLUE"), (ball.rect_x, ball.rect_y), ball.radius)
         life_bar = pygame.draw.rect(screen, pygame.Color("GREEN"), (player.rect.x, player.rect.y - 10, player.life_bar_width, player.life_bar_height))
-        # for i in range(4):
-        """"
-        if square.life == 3:
-            square.color = "RED"
-        elif square.life == 2:
-            square.color = "BLUE"
-        elif square.life == 1:
-            square.color = "GREEN"
-        if square.life > 0:
-        """
-        #square.pos_x += square.width + 25
-        # if square.life > 0:
-        """
-        if ball.rect_x + ball.radius <= square.pos_x + square.width and ball.rect_y + ball.radius <= square.pos_y + square.height or ball.rect_x + ball.radius >= square.pos_x and ball.rect_y + ball.radius <= square.pos_y + square.height:
-            # square.life -= 1
-        
-            ball.dx = -ball.dx
-        
-        if ball.rect_y + ball.radius <= square.pos_y + square.height and ball.rect_x + ball.radius >= square.pos_x <= square.pos_x + square.width:
-            ball.dy = -ball.dy
-        """
-        """"
-            if b.top <= s.bottom:
-                ball.dy = -ball.dy
-            if b.colliderect(s):
-                ball.dy = -ball.dy
-                square.life -= 1
-            print(f"BALLE : {b.top}")
-            print(f"CARRE : {s.bottom}")
-            cord_ball.append(ball.rect_x)
-            y.append(ball.rect_y)
-            cord_square.append(square.pos_y)
-        if b.colliderect(player.rect):
-            ball.dy = -ball.dy
-        """
         for s in square.all_squares:
             if s.life > 0:
                 s.update_color()
@@ -176,11 +132,3 @@ while running:
             if event.key == pygame.K_DOLLAR:
                 end_game = True
                 winning = True
-""""    
-y2 = []
-for i in range(1, len(cord_square) + 1):
-    y2.append(i)
-plt.plot(y, cord_ball, "ro")
-plt.plot(y2, cord_square, "bs")
-plt.show()
-"""
